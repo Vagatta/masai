@@ -1,0 +1,133 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Política de Privacidad | Masai Café y Copas">
+  <!-- Header con navegación de regreso -->
+  <header class="border-b border-[#483323] py-4 px-6 backdrop-blur-sm bg-[#221811]/95 sticky top-0 z-10">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <a href="/" class="flex items-center gap-2 group transition-all duration-300 hover:scale-105">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#ec6d13] group-hover:-translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        <span class="text-white text-sm font-medium">Volver a inicio</span>
+      </a>
+      <div class="flex items-center gap-2">
+        <div class="size-8 bg-[#ec6d13]/10 rounded-full p-1.5 flex items-center justify-center">
+          <img src="/src/assets/masai-logo.svg" alt="Masai Logo" width="20" height="20" class="w-full h-full object-contain" />
+        </div>
+        <h2 class="text-white text-sm font-bold leading-tight">Masai <span class="text-[#ec6d13]">Café y Copas</span></h2>
+      </div>
+    </div>
+  </header>
+  
+  <main class="bg-[#221811] min-h-screen relative overflow-hidden pt-8">
+    <!-- Patrones decorativos africanos para el fondo (más sutiles) -->
+    <div class="fixed top-1/4 left-0 w-40 h-80 pointer-events-none">
+      <svg width="100%" height="100%" viewBox="0 0 120 200" xmlns="http://www.w3.org/2000/svg" class="opacity-15">
+        <path d="M30,20 L50,40 L70,20 M30,40 L50,60 L70,40 M30,60 L50,80 L70,60" stroke="#ec6d13" stroke-width="2" fill="none" stroke-opacity="0.4"/>
+        <path d="M20,100 L40,120 L60,100 M20,120 L40,140 L60,120 M20,140 L40,160 L60,140" stroke="#ec6d13" stroke-width="2" fill="none" stroke-opacity="0.3"/>
+        <rect x="10" y="10" width="10" height="10" fill="#ec6d13" fill-opacity="0.2"/>
+        <rect x="10" y="180" width="10" height="10" fill="#ec6d13" fill-opacity="0.2"/>
+        <circle cx="15" cy="100" r="8" fill="#ec6d13" fill-opacity="0.2"/>
+      </svg>
+    </div>
+    
+    <div class="fixed top-1/4 right-0 w-40 h-80 pointer-events-none">
+      <svg width="100%" height="100%" viewBox="0 0 120 200" xmlns="http://www.w3.org/2000/svg" class="opacity-15">
+        <path d="M50,20 L70,40 L90,20 M50,40 L70,60 L90,40 M50,60 L70,80 L90,60" stroke="#ec6d13" stroke-width="2" fill="none" stroke-opacity="0.4"/>
+        <path d="M60,100 L80,120 L100,100 M60,120 L80,140 L100,120 M60,140 L80,160 L100,140" stroke="#ec6d13" stroke-width="2" fill="none" stroke-opacity="0.3"/>
+        <rect x="100" y="10" width="10" height="10" fill="#ec6d13" fill-opacity="0.2"/>
+        <rect x="100" y="180" width="10" height="10" fill="#ec6d13" fill-opacity="0.2"/>
+        <circle cx="105" cy="100" r="8" fill="#ec6d13" fill-opacity="0.2"/>
+      </svg>
+    </div>
+    
+    <div class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8 relative z-10">
+      <!-- Contenedor principal con fondo semi-transparente -->
+      <div class="bg-gradient-to-br from-[#332419]/90 to-[#221811]/95 backdrop-blur-sm rounded-lg shadow-xl border border-[#483323]/30 overflow-hidden">
+        <div class="px-6 py-8 sm:p-10 text-gray-200 space-y-8">
+          <!-- Encabezado de la política -->
+          <div class="text-center mb-10">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-white">Política de <span class="text-[#ec6d13]">Privacidad</span></h1>
+            <div class="flex items-center justify-center gap-2 mt-4 mb-6">
+              <div class="h-1 w-16 bg-[#ec6d13] rounded-full"></div>
+              <div class="h-1 w-6 bg-[#ec6d13] rounded-full opacity-60"></div>
+              <div class="h-1 w-3 bg-[#ec6d13] rounded-full opacity-40"></div>
+            </div>
+            <p class="text-lg leading-relaxed text-gray-300 max-w-3xl mx-auto">
+              Masai Café y Copas, con dirección en C. Mariano de los Cobos, 1, 47014 Valladolid, es responsable del tratamiento de los datos personales del Usuario y le informa que estos datos serán tratados de conformidad con lo dispuesto en el Reglamento (UE) 2016/679 de 27 de abril de 2016 (GDPR) relativo a la protección de las personas físicas en lo que respecta al tratamiento de datos personales y a la libre circulación de estos datos, por lo que se le facilita la siguiente información del tratamiento:
+            </p>
+          </div>
+
+        <div>
+          <h2 class="text-xl font-bold mb-3 text-[#ec6d13]">Fin del tratamiento</h2>
+          <p>
+            Los datos personales que nos proporciona a través de formularios, correo electrónico o cualquier otro medio, serán incorporados a nuestros sistemas y tratados con las siguientes finalidades:
+          </p>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>Gestionar las reservas y solicitudes de información sobre nuestros servicios.</li>
+            <li>Atender consultas y solicitudes realizadas a través de nuestros canales de contacto.</li>
+            <li>Gestionar la relación comercial y el envío de información solicitada.</li>
+            <li>Enviar comunicaciones comerciales sobre nuestros productos y servicios, siempre que haya dado su consentimiento expreso para ello.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold mb-3 text-[#ec6d13]">Base legal del tratamiento</h2>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>Consentimiento del interesado para el tratamiento de sus datos para uno o varios fines específicos.</li>
+            <li>Interés legítimo del responsable: para el envío de comunicaciones comerciales sobre productos o servicios similares a los ya contratados por el cliente.</li>
+            <li>Ejecución de un contrato: para gestionar la relación con nuestros clientes y proveedores.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold mb-3 text-[#ec6d13]">Criterios de conservación de los datos</h2>
+          <p>
+            Los datos personales proporcionados se conservarán hasta que se solicite su supresión por el interesado o durante el tiempo necesario para cumplir con las obligaciones legales.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold mb-3 text-[#ec6d13]">Comunicación de los datos</h2>
+          <p>
+            Los datos no se comunicarán a terceros, salvo obligación legal o cuando sea necesario para la prestación del servicio solicitado.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold mb-3 text-[#ec6d13]">Derechos que asisten al Usuario</h2>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>Derecho a retirar el consentimiento en cualquier momento.</li>
+            <li>Derecho de acceso, rectificación, portabilidad y supresión de sus datos y a la limitación u oposición al tratamiento.</li>
+            <li>Derecho a presentar una reclamación ante la autoridad de control (agpd.es) si considera que el tratamiento no se ajusta a la normativa vigente.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold mb-3 text-[#ec6d13]">Datos de contacto para ejercer sus derechos</h2>
+          <p>
+            Para ejercer los derechos mencionados, el Usuario puede dirigir una comunicación por escrito a la dirección física de Masai Café y Copas o al correo electrónico: info@masaicafeycopas.com, incluyendo en ambos casos fotocopia de su DNI u otro documento identificativo similar.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold mb-3 text-[#ec6d13]">Medidas de seguridad</h2>
+          <p>
+            De conformidad con lo dispuesto en las normativas vigentes en protección de datos personales, Masai Café y Copas está cumpliendo con todas las disposiciones de las normativas GDPR para el tratamiento de los datos personales de su responsabilidad, y manifiestamente con los principios descritos en el artículo 5 del GDPR, por los cuales son tratados de manera lícita, leal y transparente en relación con el interesado y adecuados, pertinentes y limitados a lo necesario en relación con los fines para los que son tratados.
+          </p>
+          <p class="mt-3">
+            Masai Café y Copas garantiza que ha implementado políticas técnicas y organizativas apropiadas para aplicar las medidas de seguridad que establecen el GDPR con el fin de proteger los derechos y libertades de los Usuarios y les ha comunicado la información adecuada para que puedan ejercerlos.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-8">
+        <a href="/" class="inline-block bg-[#ec6d13] hover:bg-[#d45e0a] text-white px-6 py-2 rounded-lg transition-all duration-300">
+          Volver a la página principal
+        </a>
+      </div>
+    </div>
+  </main>
+</Layout>

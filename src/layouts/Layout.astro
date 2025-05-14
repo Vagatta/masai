@@ -1,14 +1,84 @@
+---
+interface Props {
+	title?: string;
+	noSideElements?: boolean;
+}
+
+const { title = 'Masai Café y Copas | Experiencia Africana', noSideElements = false } = Astro.props;
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content="Masai Café y Copas - Experimenta la auténtica experiencia africana en Valladolid" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title}</title>
+		<slot name="head" />
 	</head>
 	<body>
-		<slot />
+		{!noSideElements && (
+			<>
+				<!-- Elementos decorativos laterales para toda la aplicación -->
+				<div class="side-decorations">
+					<!-- Columna izquierda -->
+					<div class="side-column left-column">
+						<!-- Patrón tribal superior -->
+						<div class="tribal-pattern top-pattern">
+							<svg width="120" height="200" viewBox="0 0 120 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M20 0L40 30L60 0L80 30L100 0V200L80 170L60 200L40 170L20 200V0Z" fill="#EC6D13" fill-opacity="0.15"/>
+								<path d="M0 40H50L30 60H50L30 80H50L30 100H50L30 120H0V40Z" fill="#EC6D13" fill-opacity="0.2"/>
+							</svg>
+						</div>
+						
+						<!-- Banda decorativa central -->
+						<div class="vertical-band"></div>
+						
+						<!-- Patrón tribal inferior -->
+						<div class="tribal-pattern bottom-pattern">
+							<svg width="120" height="200" viewBox="0 0 120 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M30 200L50 170L70 200L90 170L110 200V0L90 30L70 0L50 30L30 0V200Z" fill="#EC6D13" fill-opacity="0.15"/>
+								<path d="M0 160H30L10 140H30L10 120H30L10 100H30L10 80H0V160Z" fill="#EC6D13" fill-opacity="0.2"/>
+							</svg>
+						</div>
+					</div>
+					
+					<!-- Columna derecha -->
+					<div class="side-column right-column">
+						<!-- Patrón tribal superior -->
+						<div class="tribal-pattern top-pattern">
+							<svg width="120" height="200" viewBox="0 0 120 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M100 0L80 30L60 0L40 30L20 0V200L40 170L60 200L80 170L100 200V0Z" fill="#EC6D13" fill-opacity="0.15"/>
+								<path d="M120 40H70L90 60H70L90 80H70L90 100H70L90 120H120V40Z" fill="#EC6D13" fill-opacity="0.2"/>
+							</svg>
+						</div>
+						
+						<!-- Banda decorativa central -->
+						<div class="vertical-band"></div>
+						
+						<!-- Patrón tribal inferior -->
+						<div class="tribal-pattern bottom-pattern">
+							<svg width="120" height="200" viewBox="0 0 120 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M90 200L70 170L50 200L30 170L10 200V0L30 30L50 0L70 30L90 0V200Z" fill="#EC6D13" fill-opacity="0.15"/>
+								<path d="M120 160H90L110 140H90L110 120H90L110 100H90L110 80H120V160Z" fill="#EC6D13" fill-opacity="0.2"/>
+							</svg>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Bordes decorativos verticales -->
+				<div class="decorative-borders">
+					<div class="border-line left"></div>
+					<div class="border-line right"></div>
+				</div>
+			</>
+		)}
+		
+		<div class={noSideElements ? "content-no-margin" : ""}>
+			<slot />
+		</div>
 	</body>
 </html>
 
@@ -18,5 +88,303 @@
 		margin: 0;
 		width: 100%;
 		height: 100%;
+		background-color: #221811;
+		scroll-behavior: smooth;
+	}
+	
+	.content-no-margin {
+		width: 100%;
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+	
+	/* Estilos para los elementos decorativos laterales */
+	.side-decorations {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		z-index: 0;
+	}
+	
+	.side-column {
+		position: absolute;
+		height: 100%;
+		width: 160px; /* Más ancho para que sea visible */
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 0;
+	}
+	
+	.left-column {
+		left: 0;
+		border-right: 1px solid rgba(236, 109, 19, 0.1);
+	}
+	
+	.right-column {
+		right: 0;
+		border-left: 1px solid rgba(236, 109, 19, 0.1);
+	}
+	
+	.tribal-pattern {
+		width: 100%;
+		height: 200px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.vertical-band {
+		flex-grow: 1;
+		width: 2px;
+		margin: 0 auto;
+		background: linear-gradient(
+			to bottom,
+			rgba(236, 109, 19, 0.2) 0%,
+			rgba(236, 109, 19, 0.1) 15%,
+			rgba(236, 109, 19, 0.05) 30%,
+			rgba(236, 109, 19, 0) 45%,
+			rgba(236, 109, 19, 0) 55%,
+			rgba(236, 109, 19, 0.05) 70%,
+			rgba(236, 109, 19, 0.1) 85%,
+			rgba(236, 109, 19, 0.2) 100%
+		);
+	}
+	
+	/* Bordes decorativos verticales */
+	.decorative-borders {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		z-index: 5;
+	}
+	
+	.border-line {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: 6px;
+	}
+	
+	.border-line.left {
+		left: 160px; /* Alinear con el borde de la columna */
+		background: linear-gradient(
+			to right,
+			rgba(236, 109, 19, 0.15) 0%,
+			rgba(236, 109, 19, 0) 100%
+		);
+	}
+	
+	.border-line.right {
+		right: 160px; /* Alinear con el borde de la columna */
+		background: linear-gradient(
+			to left,
+			rgba(236, 109, 19, 0.15) 0%,
+			rgba(236, 109, 19, 0) 100%
+		);
+	}
+	
+	/* Ajustes para contenido principal */
+	:global(slot) {
+		position: relative;
+		z-index: 10;
+		display: block;
+		margin: 0 160px; /* Espacio para las columnas laterales */
+	}
+	
+	/* Versión móvil - ajustar lateral en pantallas pequeñas */
+	@media (max-width: 1200px) {
+		.side-column {
+			width: 100px;
+		}
+		
+		.border-line.left {
+			left: 100px;
+		}
+		
+		.border-line.right {
+			right: 100px;
+		}
+		
+		:global(slot) {
+			margin: 0 100px;
+		}
+	}
+	
+	@media (max-width: 768px) {
+		.side-column {
+			width: 40px;
+		}
+		
+		.tribal-pattern {
+			height: 120px;
+		}
+		
+		.border-line.left {
+			left: 40px;
+		}
+		
+		.border-line.right {
+			right: 40px;
+		}
+		
+		:global(slot) {
+			margin: 0 40px;
+		}
+	}
+	
+	@media (max-width: 480px) {
+		.side-column {
+			width: 20px;
+		}
+		
+		.tribal-pattern svg {
+			width: 20px;
+			height: 60px;
+		}
+		
+		.vertical-band {
+			width: 1px;
+		}
+		
+		.border-line {
+			width: 3px;
+		}
+		
+		.border-line.left {
+			left: 20px;
+		}
+		
+		.border-line.right {
+			right: 20px;
+		}
+		
+		:global(slot) {
+			margin: 0 20px;
+		}
 	}
 </style>
+
+<script>
+	// Script para animar los elementos decorativos laterales al hacer scroll
+	window.addEventListener('scroll', () => {
+		// Efecto parallax suave para los patrones tribales
+		const tribalPatterns = document.querySelectorAll('.tribal-pattern');
+		tribalPatterns.forEach((element, index) => {
+			if (element instanceof HTMLElement) {
+				// Diferentes velocidades dependiendo de su posición
+				const speed = element.classList.contains('top-pattern') ? 0.08 : 0.05;
+				const yPos = -(window.scrollY * speed);
+				
+				// Aplicar efecto de parallax
+				element.style.transform = `translateY(${yPos}px)`;
+			}
+		});
+		
+		// Suave desvanecimiento de las bandas verticales
+		const verticalBands = document.querySelectorAll('.vertical-band');
+		const opacity = Math.max(0.3, 1 - (window.scrollY * 0.001));
+		
+		verticalBands.forEach(band => {
+			if (band instanceof HTMLElement) {
+				band.style.opacity = opacity.toString();
+			}
+		});
+	});
+	
+	// Aplicar desplazamiento inicial de los elementos y añadir efectos de hover
+	document.addEventListener('DOMContentLoaded', () => {
+		// Obtener todos los patrones tribales
+		const sideColumns = document.querySelectorAll('.side-column');
+		
+		// Añadir efecto de hover a las columnas laterales
+		sideColumns.forEach(column => {
+			if (column instanceof HTMLElement) {
+				column.addEventListener('mouseenter', () => {
+					column.style.width = column.classList.contains('left-column') ? 'calc(160px + 10px)' : 'calc(160px + 10px)';
+					column.style.opacity = '0.9';
+					column.style.transition = 'width 0.3s ease, opacity 0.3s ease';
+				});
+				
+				column.addEventListener('mouseleave', () => {
+					column.style.width = '160px';
+					column.style.opacity = '1';
+				});
+			}
+		});
+		
+		// Animar los SVG de patrones tribales al entrar y salir del viewport
+		if ('IntersectionObserver' in window) {
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.target instanceof HTMLElement) {
+						if (entry.isIntersecting) {
+							entry.target.style.opacity = '1';
+							entry.target.style.transform = 'translateY(0)';
+						} else {
+							const direction = entry.boundingClientRect.top < 0 ? 20 : -20;
+							entry.target.style.opacity = '0.5';
+							entry.target.style.transform = `translateY(${direction}px)`;
+						}
+					}
+				});
+			}, {
+				root: null,
+				rootMargin: '0px',
+				threshold: 0.1
+			});
+			
+			// Verificar primero si existen patrones tribales antes de intentar animarlos
+			const tribalPatterns = document.querySelectorAll('.tribal-pattern');
+			if (tribalPatterns.length > 0) {
+				tribalPatterns.forEach(pattern => {
+					// Verificación adicional para asegurarse de que el elemento existe y es un HTMLElement
+					if (pattern && pattern instanceof HTMLElement) {
+						try {
+							pattern.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+							observer.observe(pattern);
+						} catch (error) {
+							console.error('Error al aplicar transición a patrón tribal:', error);
+						}
+					}
+				});
+			}
+		}
+		
+		// Ajustar el margen del contenido principal basado en el tamaño de pantalla
+		const adjustContentMargin = () => {
+			const viewportWidth = window.innerWidth;
+			// Buscamos todos los posibles div hijos para contemplar diferentes estructuras DOM
+			const contentContainers = document.querySelectorAll('body > div');
+			
+			if (contentContainers.length === 0) return;
+			
+			// Iteramos por cada contenedor para aplicar o no márgenes
+			contentContainers.forEach(container => {
+				if (container instanceof HTMLElement) {
+					// No ajustamos márgenes si el elemento tiene la clase content-no-margin
+					if (container.classList.contains('content-no-margin')) {
+						container.style.margin = '0';
+						return;
+					}
+					
+					if (viewportWidth > 1200) {
+						container.style.margin = '0 160px';
+					} else if (viewportWidth > 768) {
+						container.style.margin = '0 100px';
+					} else if (viewportWidth > 480) {
+						container.style.margin = '0 40px';
+					} else {
+						container.style.margin = '0 20px';
+					}
+				}
+			});
+		};
+		
+		// Aplicar ajuste inicial y escuchar cambios de tamaño
+		adjustContentMargin();
+		window.addEventListener('resize', adjustContentMargin);
+	});
+</script>
