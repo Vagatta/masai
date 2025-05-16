@@ -7,7 +7,7 @@ import Layout from "../layouts/Layout.astro";
   <header class="border-b border-[#483323] py-4 px-6 backdrop-blur-sm bg-[#221811]/95 sticky top-0 z-10">
     <div class="max-w-6xl mx-auto flex justify-between items-center">
       <a href="/" class="flex items-center gap-2 group transition-all duration-300 hover:scale-105">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#ec6d13] group-hover:-translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#ec6d13] group-hover:-translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="min-width:1.25rem; min-height:1.25rem; width:1.25rem; height:1.25rem;">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
         </svg>
         <span class="text-white text-sm font-medium">Volver a inicio</span>
@@ -23,8 +23,8 @@ import Layout from "../layouts/Layout.astro";
   
   <main class="bg-[#221811] min-h-screen relative overflow-hidden pt-8">
     <!-- Patrones decorativos africanos para el fondo (más sutiles) -->
-    <div class="fixed top-1/4 left-0 w-40 h-80 pointer-events-none">
-      <svg width="100%" height="100%" viewBox="0 0 120 200" xmlns="http://www.w3.org/2000/svg" class="opacity-15">
+    <div class="fixed top-1/4 left-0 w-40 h-80 pointer-events-none z-0">
+      <svg width="100%" height="100%" viewBox="0 0 120 200" xmlns="http://www.w3.org/2000/svg" class="opacity-10">
         <path d="M60,10 L80,30 L60,50 L40,30 Z" fill="#ec6d13" fill-opacity="0.4"/>
         <path d="M60,60 L80,80 L60,100 L40,80 Z" fill="#ec6d13" fill-opacity="0.3"/>
         <path d="M60,110 L80,130 L60,150 L40,130 Z" fill="#ec6d13" fill-opacity="0.2"/>
@@ -34,8 +34,8 @@ import Layout from "../layouts/Layout.astro";
       </svg>
     </div>
     
-    <div class="fixed top-1/4 right-0 w-40 h-80 pointer-events-none">
-      <svg width="100%" height="100%" viewBox="0 0 120 200" xmlns="http://www.w3.org/2000/svg" class="opacity-15">
+    <div class="fixed top-1/4 right-0 w-40 h-80 pointer-events-none z-0">
+      <svg width="100%" height="100%" viewBox="0 0 120 200" xmlns="http://www.w3.org/2000/svg" class="opacity-10">
         <path d="M60,10 L80,30 L60,50 L40,30 Z" fill="#ec6d13" fill-opacity="0.4"/>
         <path d="M60,60 L80,80 L60,100 L40,80 Z" fill="#ec6d13" fill-opacity="0.3"/>
         <path d="M60,110 L80,130 L60,150 L40,130 Z" fill="#ec6d13" fill-opacity="0.2"/>
@@ -45,11 +45,11 @@ import Layout from "../layouts/Layout.astro";
       </svg>
     </div>
     
-    <div class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8 relative z-10">
       
       <!-- Contenedor principal con fondo semi-transparente -->
-      <div class="bg-gradient-to-br from-[#332419]/90 to-[#221811]/95 backdrop-blur-sm rounded-lg shadow-xl border border-[#483323]/30 overflow-hidden">
-        <div class="px-6 py-8 sm:p-10 text-gray-200 space-y-8">
+      <div class="bg-[#2d1c0e] bg-opacity-100 rounded-2xl shadow-2xl border border-[#ec6d13]/60 overflow-hidden">
+        <div class="px-6 py-8 sm:p-10 text-white space-y-8">
           <!-- Encabezado de la política -->
           <div class="text-center mb-10">
             <h1 class="text-3xl md:text-4xl font-extrabold text-white">Política de <span class="text-[#ec6d13]">Cookies</span></h1>
@@ -58,7 +58,7 @@ import Layout from "../layouts/Layout.astro";
               <div class="h-1 w-6 bg-[#ec6d13] rounded-full opacity-60"></div>
               <div class="h-1 w-3 bg-[#ec6d13] rounded-full opacity-40"></div>
             </div>
-            <p class="text-lg leading-relaxed text-gray-300 max-w-3xl mx-auto">
+            <p class="text-lg leading-relaxed text-white max-w-2xl mx-auto">
               En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y Comercio Electrónico le informamos de que este sitio web, al igual que la mayoría de los sitios en Internet, usa Cookies para mejorar y optimizar la experiencia del usuario. A continuación encontrará información detallada sobre qué son las "Cookies", qué tipología utiliza este sitio web, cómo cambiar la configuración de sus cookies, y qué ocurre si deshabilita las Cookies.
             </p>
           </div>
