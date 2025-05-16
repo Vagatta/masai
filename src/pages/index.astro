@@ -52,11 +52,28 @@ import Layout from "../layouts/Layout.astro";
   <script slot="head" is:inline>
     document.addEventListener('DOMContentLoaded', () => {
       // Inicializar AOS (Animate On Scroll)
-      AOS.init({
-        duration: 800,
-        easing: 'ease-out',
-        once: true
-      });
+      if (window.AOS) {
+        // Asignar animaciones a las secciones principales
+        const sections = [
+          document.getElementById('menu-section'),
+          document.getElementById('somos-section'),
+          document.getElementById('galeria-section'),
+          document.getElementById('contacto-section'),
+          document.getElementById('resenas-section')
+        ];
+        sections.forEach((section, i) => {
+          if (section) {
+            section.setAttribute('data-aos', 'fade-up');
+            section.setAttribute('data-aos-delay', String(i * 100));
+          }
+        });
+        AOS.init({
+          duration: 800,
+          easing: 'ease-out',
+          once: true
+        });
+        setTimeout(() => AOS.refresh(), 100);
+      }
 
       // Control del menú móvil
       const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -154,6 +171,40 @@ import Layout from "../layouts/Layout.astro";
       50% { transform: translateY(-20px); }
       100% { transform: translateY(0px); }
     }
+
+    @keyframes float-slow {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-18px) scale(1.04); }
+    }
+    @keyframes float-medium {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(12px) scale(1.03); }
+    }
+    @keyframes float-fast {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-8px) scale(1.01); }
+    }
+    @keyframes float-card {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-12px) scale(1.03); }
+    }
+    @keyframes float-img {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(10px) scale(1.02); }
+    }
+    .animate-float-slow { animation: float-slow 7s ease-in-out infinite; }
+    .animate-float-medium { animation: float-medium 5s ease-in-out infinite; }
+    .animate-float-fast { animation: float-fast 3.5s ease-in-out infinite; }
+    .animate-float-title { animation: float-slow 6s ease-in-out infinite; }
+    .animate-float-sub { animation: float-medium 5.5s ease-in-out infinite; }
+    .animate-float-p { animation: float-fast 4.5s ease-in-out infinite; }
+    .animate-float-img { animation: float-img 7.5s ease-in-out infinite; }
+    .animate-float-img2 { animation: float-medium 7s ease-in-out infinite; }
+    .animate-float-card { animation: float-card 6.5s ease-in-out infinite; }
+
+    .card, .bg-[#221811].rounded-xl.shadow-lg, .galeria-card, .reseña-card {
+      will-change: transform;
+    }
   </style>
   <link slot="head" rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
   <link
@@ -198,17 +249,17 @@ import Layout from "../layouts/Layout.astro";
               <nav aria-label="Navegación principal" class="hidden md:block">
                 <ul class="flex items-center gap-1 md:gap-2 bg-black/30 p-1.5 rounded-full backdrop-blur-md border border-white/10">
                   <li>
-                    <a id="menu-nav-link" class="text-white text-sm md:text-base font-medium px-4 py-2 rounded-full hover:!bg-[#ec6d13] transition-all duration-300 flex items-center gap-1.5 group !important" href="#menu-section" style="--hover-bg: #ec6d13;">
+                    <a class="text-white text-sm md:text-base font-medium px-4 py-2 rounded-full hover:bg-[#ec6d13] transition-all duration-300 flex items-center gap-1.5 group" href="#somos-section">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-[#ec6d13] group-hover:text-white transition-colors duration-300" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm4 5V6a4 4 0 00-8 0v1h8zm-3 4a2 2 0 11-4 0 2 2 0 014 0z" clip-rule="evenodd" />
                       </svg>
-                      <span>Menú</span>
+                      <span>Somos</span>
                     </a>
                   </li>
                   <li>
                     <a class="text-white text-sm md:text-base font-medium px-4 py-2 rounded-full hover:bg-[#ec6d13] transition-all duration-300 flex items-center gap-1.5 group" href="#contacto-section">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-[#ec6d13] group-hover:text-white transition-colors duration-300" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm4 5V6a4 4 0 00-8 0v1h8zm-3 4a2 2 0 11-4 0 2 2 0 014 0z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
                       </svg>
                       <span>Contacto</span>
                     </a>
@@ -240,6 +291,7 @@ import Layout from "../layouts/Layout.astro";
                 </button>
                 <nav class="flex flex-col items-center gap-8">
                   <a href="#menu-section" class="text-white text-xl font-medium hover:text-[#ec6d13] transition-colors duration-300">Menú</a>
+                  <a href="#somos-section" class="text-white text-xl font-medium hover:text-[#ec6d13] transition-colors duration-300">Somos</a>
                   <a href="#contacto-section" class="text-white text-xl font-medium hover:text-[#ec6d13] transition-colors duration-300">Contacto</a>
                   <a href="#resenas-section" class="text-white text-xl font-medium hover:text-[#ec6d13] transition-colors duration-300">Reseñas</a>
                 </nav>
@@ -291,15 +343,6 @@ import Layout from "../layouts/Layout.astro";
                 </svg>
                 <span>Ver Carta</span>
               </a>
-              <a
-                href="#contacto-section"
-                class="flex items-center justify-center gap-2 min-w-[150px] cursor-pointer overflow-hidden rounded-full border-2 border-white h-14 px-8 bg-transparent text-white text-base font-bold tracking-wide hover:bg-white/10 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
-                </svg>
-                <span>Contacto</span>
-              </a>
             </div>
             
             <!-- Flecha de scroll -->
@@ -322,18 +365,18 @@ import Layout from "../layouts/Layout.astro";
             <!-- Aquí va el componente de carta/menu interactivo, por ejemplo un slider, tabs o grid de productos -->
             <!-- Ejemplo de grid simple -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div class="bg-[#221811] rounded-xl p-6 shadow-lg flex flex-col items-center hover:scale-105 transition-transform">
-                <img src="/src/assets/astro.svg" alt="Cócteles" class="w-16 h-16 mb-4" />
+              <div class="bg-[#221811] rounded-xl p-6 shadow-lg flex flex-col items-center hover:scale-105 transition-transform animate-float-card">
+                <img src="/src/assets/astro.svg" alt="Cócteles" class="w-16 h-16 mb-4 animate-float-img" />
                 <h3 class="text-[#ec6d13] text-xl font-bold mb-2">Cócteles</h3>
                 <p class="text-white text-sm text-center">Sabores africanos, clásicos y de autor. Prueba nuestro Masai Mule o el clásico Mojito.</p>
               </div>
-              <div class="bg-[#221811] rounded-xl p-6 shadow-lg flex flex-col items-center hover:scale-105 transition-transform">
-                <img src="/src/assets/astro.svg" alt="Cafés" class="w-16 h-16 mb-4" />
+              <div class="bg-[#221811] rounded-xl p-6 shadow-lg flex flex-col items-center hover:scale-105 transition-transform animate-float-card">
+                <img src="/src/assets/astro.svg" alt="Cafés" class="w-16 h-16 mb-4 animate-float-img" />
                 <h3 class="text-[#ec6d13] text-xl font-bold mb-2">Cafés</h3>
                 <p class="text-white text-sm text-center">Café de especialidad, frappés, capuccinos y más. Disfruta de un café con esencia tribal.</p>
               </div>
-              <div class="bg-[#221811] rounded-xl p-6 shadow-lg flex flex-col items-center hover:scale-105 transition-transform">
-                <img src="/src/assets/astro.svg" alt="Batidos" class="w-16 h-16 mb-4" />
+              <div class="bg-[#221811] rounded-xl p-6 shadow-lg flex flex-col items-center hover:scale-105 transition-transform animate-float-card">
+                <img src="/src/assets/astro.svg" alt="Batidos" class="w-16 h-16 mb-4 animate-float-img" />
                 <h3 class="text-[#ec6d13] text-xl font-bold mb-2">Batidos</h3>
                 <p class="text-white text-sm text-center">Batidos naturales, smoothies y opciones veganas. Refresca tu día con energía africana.</p>
               </div>
@@ -348,19 +391,41 @@ import Layout from "../layouts/Layout.astro";
           </div>
         </section>
 
+        <!-- Sección Somos -->
+        <section id="somos-section" class="relative flex flex-col md:flex-row items-center justify-between bg-[#ec6d13] py-24 px-6 md:px-20 border-b-4 border-[#221811] overflow-hidden">
+          <!-- Elementos decorativos flotantes -->
+          <div class="absolute -top-10 -left-10 w-40 h-40 rounded-full bg-[#ec6d13] opacity-30 blur-2xl animate-float-slow z-0"></div>
+          <div class="absolute bottom-0 right-0 w-32 h-32 rounded-full bg-[#221811] opacity-20 blur-2xl animate-float-medium z-0"></div>
+          <div class="absolute top-1/2 left-1/2 w-24 h-24 rounded-full bg-white opacity-10 blur-3xl animate-float-fast z-0"></div>
+          <div class="flex-1 flex flex-col justify-center items-start z-10">
+            <h2 class="text-white text-7xl md:text-[8rem] font-black leading-none mb-8 tracking-tight drop-shadow-xl animate-float-title">Somos</h2>
+            <h3 class="text-[#221811] text-lg md:text-xl font-bold uppercase tracking-widest mb-6 animate-float-sub">Masai Café y Copas te ofrece estupendos platos de la cocina española</h3>
+            <p class="text-[#221811] text-base md:text-lg max-w-2xl mb-4 animate-float-p">
+              En este lugar, puedes pedir su sabroso laing, su casero juane y su perfectamente elaborado pescado. No hay nada mejor que pedir unos generosos helados, unos bien preparados donuts o un atrayente helado de queso. Sus sorprendentes mojitos son la elección perfecta. Es estupendo poder tomar unos sensacionales batidos, unos extraordinarios batidos de frutas o un magnífico café.
+            </p>
+            <p class="text-[#221811] text-base md:text-lg max-w-2xl mb-4 animate-float-p">
+              Si repasas las opiniones de los comensales, verás que dicen que el personal es alegre en este lugar. Un genial servicio es siempre un punto importante. Pagarás unos precios asequibles por sus platos. En este bar podrás disfrutar de su hogareña decoración y de un interesante ambiente. Los usuarios de Google han premiado a Masai Café y Copas con un 4,6.
+            </p>
+          </div>
+          <div class="flex-1 flex flex-row gap-6 justify-end items-center mt-10 md:mt-0 z-10">
+            <img src="/src/assets/fruta-RVHk6m4pe1uBk2WXWaj5XtI-1248x770@El Norte.webp" alt="Fachada Masai" class="w-56 h-72 object-cover rounded-xl shadow-2xl border-4 border-white animate-float-img" />
+            <img src="/src/assets/images.webp" alt="Interior Masai" class="w-56 h-72 object-cover rounded-xl shadow-2xl border-4 border-white animate-float-img2" />
+          </div>
+        </section>
+
         <!-- Hero Galería (ahora carrusel) -->
         <section id="galeria-section" class="relative min-h-[40vh] flex flex-col justify-center items-center bg-[#221811] py-20 px-4 border-b-4 border-[#483323]">
           <h2 class="text-white text-3xl md:text-4xl font-bold mb-6 tracking-tight">Galería</h2>
           <div class="relative w-full max-w-2xl flex flex-col items-center">
             <div id="carousel-images" class="w-full h-72 rounded-xl overflow-hidden shadow-lg flex items-center justify-center bg-black">
-              <img id="carousel-img" src="/src/assets/fruta-RVHk6m4pe1uBk2WXWaj5XtI-1248x770@El Norte.webp" alt="Galería Masai" class="object-cover w-full h-full transition-all duration-500" />
+              <img id="carousel-img" src="/src/assets/fruta-RVHk6m4pe1uBk2WXWaj5XtI-1248x770@El Norte.webp" alt="Galería Masai" class="object-cover w-full h-full transition-all duration-500 animate-float-img" />
             </div>
             <div class="flex gap-4 mt-4">
               <button id="carousel-prev" class="bg-[#ec6d13] hover:bg-[#d45e0a] text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition-all" aria-label="Anterior">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
               </button>
               <button id="carousel-next" class="bg-[#ec6d13] hover:bg-[#d45e0a] text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition-all" aria-label="Siguiente">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7-7-7-7" /></svg>
               </button>
             </div>
           </div>
@@ -433,7 +498,7 @@ import Layout from "../layouts/Layout.astro";
             </div>
             <!-- Lado derecho: mapa -->
             <div class="flex-1 min-w-[300px] bg-[#1a130c] flex items-center justify-center p-0 md:p-0">
-              <iframe class="rounded-none md:rounded-r-3xl w-full h-80 md:h-full border-0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2957.019019655809!2d-4.697619684543457!3d41.66261667923909!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd47a3e2b2e2b2b1%3A0x2b2b2b2b2b2b2b2b!2sC.%20Mariano%20de%20los%20Cobos%2C%201%2C%2047014%20Valladolid!5e0!3m2!1ses!2ses!4v1680000000000!5m2!1ses!2ses" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa Masai Café y Copas"></iframe>
+              <iframe class="rounded-none md:rounded-r-3xl w-full h-80 md:h-full border-0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2957.019019655809!2d-4.697619684543457!3d41.66261667923909!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd47a3e2b2e2b2b1%3A0x2b2b2b2b2b2b2b!2sC.%20Mariano%20de%20los%20Cobos%2C%201%2C%2047014%20Valladolid!5e0!3m2!1ses!2ses!4v1680000000000!5m2!1ses!2ses" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa Masai Café y Copas"></iframe>
             </div>
           </div>
         </section>
@@ -442,7 +507,7 @@ import Layout from "../layouts/Layout.astro";
         <section id="resenas-section" class="relative min-h-[40vh] flex flex-col justify-center items-center bg-gradient-to-b from-[#221811] to-black py-20 px-4 border-b-4 border-[#483323]">
           <h2 class="text-[#ec6d13] text-3xl md:text-4xl font-bold mb-6 tracking-tight">Reseñas</h2>
           <div class="w-full max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="bg-[#221811] rounded-xl p-6 shadow-lg flex flex-col gap-2">
+            <div class="bg-[#221811] rounded-xl p-6 shadow-lg flex flex-col gap-2 animate-float-card">
               <div class="flex items-center gap-2 mb-2">
                 <span class="text-[#ec6d13] text-lg font-bold">★★★★★</span>
                 <span class="text-white font-semibold">5.0</span>
@@ -450,7 +515,7 @@ import Layout from "../layouts/Layout.astro";
               <p class="text-white text-base mb-2">“Un sitio espectacular, ambiente único y cócteles de 10. ¡Volveremos!”</p>
               <span class="text-[#c9a992] font-bold">- Laura G. (Google, 2024)</span>
             </div>
-            <div class="bg-[#221811] rounded-xl p-6 shadow-lg flex flex-col gap-2">
+            <div class="bg-[#221811] rounded-xl p-6 shadow-lg flex flex-col gap-2 animate-float-card">
               <div class="flex items-center gap-2 mb-2">
                 <span class="text-[#ec6d13] text-lg font-bold">★★★★★</span>
                 <span class="text-white font-semibold">5.0</span>
@@ -458,7 +523,7 @@ import Layout from "../layouts/Layout.astro";
               <p class="text-white text-base mb-2">“Uno de mis sitios favoritos de Valladolid. No hay batidos ni helados como aquí. El ambiente muy acogedor y la atención siempre de 10. Además no han subido los precios tanto como el resto y mantienen la calidad con el paso de los años.”</p>
               <span class="text-[#c9a992] font-bold">- César A. (Google, 2025)</span>
             </div>
-            <div class="bg-[#221811] rounded-xl p-6 shadow-lg flex flex-col gap-2">
+            <div class="bg-[#221811] rounded-xl p-6 shadow-lg flex flex-col gap-2 animate-float-card">
               <div class="flex items-center gap-2 mb-2">
                 <span class="text-[#ec6d13] text-lg font-bold">★★★★☆</span>
                 <span class="text-white font-semibold">4.7</span>
@@ -466,7 +531,7 @@ import Layout from "../layouts/Layout.astro";
               <p class="text-white text-base mb-2">“Muy buena música y cócteles originales. Volveré sin duda.”</p>
               <span class="text-[#c9a992] font-bold">- Marta L. (Google, 2024)</span>
             </div>
-            <div class="bg-[#221811] rounded-xl p-6 shadow-lg flex flex-col gap-2">
+            <div class="bg-[#221811] rounded-xl p-6 shadow-lg flex flex-col gap-2 animate-float-card">
               <div class="flex items-center gap-2 mb-2">
                 <span class="text-[#ec6d13] text-lg font-bold">★★★★★</span>
                 <span class="text-white font-semibold">5.0</span>
